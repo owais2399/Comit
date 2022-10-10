@@ -1,78 +1,28 @@
-import { exec, spawnSync } from "child_process";
-import { readFile, writeFile } from 'fs/promises';
-import { exit } from "process";
-import gitUserEmail from "git-user-email"
-import clipboard from "clipboardy"
+#! /usr/bin/env node
+import { program } from "commander";
 
-let CONFIG_PATH = './config.json'
+import copy from "./commands/copy.js";
+import init from "./commands/init.js";
+import showConfig from "./commands/showConfig.js";
+import reset from "./commands/reset.js";
 
-let config = JSON.parse(
-  await readFile(
-    new URL(CONFIG_PATH, import.meta.url)
-  )
-);
+program
+  .description("Copy commit message to clipboard")
+  .argument("[commit-msg]", "commit message")
+  .option("-c", "commits to git instead of copying to clipboard")
+  .action((commitMsg) => copy(commitMsg, program.opts()["c"]));
+
+program
+  .command("init")
+  .description("Starts the config initialization wizard")
+  .action(init);
+
+program
+  .command("show-config")
+  .description("Displays the current config, if set")
+  .action(showConfig);
+
+program.command("reset").description("Resets the set config").action(reset);
 
 
-let driverEmail;
-try {
-    driverEmail = gitUserEmail();
-    config.members = config.members.filter(member => member.email !== driverEmail)
-} catch (error) {
-    exit(1)
-}
-
-let args = process.argv.slice(2);
-
-let message = `[${config.parentIssue}]`
-
-if (config.childIssue) {
-    message += `[${config.childIssue}] `
-}
-
-switch (args[0]) {
-    case "--init":
-        let parentIssue = args[1]
-        let childIssue = args[2] ? args[2] : ''
-        
-        if (!parentIssue) {
-            console.error("Missing argument parentIssue")
-            exit(1)
-        }
-        config.parentIssue = parentIssue;
-        
-        if (childIssue === '') {
-            delete config.childIssue
-        } else {
-            config.childIssue = childIssue
-        }
-
-        let newConfig = JSON.stringify(config, null, 2);
-        await writeFile(CONFIG_PATH, newConfig);
-        console.log(`Updated config\nparentIssue: ${parentIssue}\nchildIssue: ${childIssue}`)
-        break;
-    
-    
-    case undefined:
-        message += ' \n'
-        config.members.forEach(member => message += `\nCo-Authored By: ${member.name} <${member.email}>`)
-        clipboard.writeSync(message);
-        break;
-    
-    
-    
-    default:
-        message += args[0]
-        message += ' \n'
-        config.members.forEach(member => message += `\nCo-Authored By: ${member.name} <${member.email}>`)
-        console.log(`Commiting with message:\n${message}`);
-        exec(`git commit -m "${message}"`, (error, outstr, errstr) => {
-            
-            console.log('\n--------------------------------------------\n')
-            if (error) {
-                console.error(errstr)
-            } else {
-                console.log(outstr)
-            }
-        })
-        break;
-}
+program.parse();
