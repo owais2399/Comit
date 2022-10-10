@@ -8,6 +8,7 @@ import reset from "./commands/reset.js";
 import set from "./commands/set.js";
 import setTicket from "./commands/setTicket.js";
 import delChildTicket from "./commands/delChildTicket.js";
+import branch from "./commands/branch.js";
 
 program
   .description("Copy commit message to clipboard")
@@ -56,5 +57,11 @@ child
   .description("Sets the child ticket")
   .argument("<ticket>", "Child Ticket")
   .action((ticket) => setTicket(ticket, "childTicket"));
+
+program
+  .command("branch")
+  .description("Copies a generated branch name to clipboard")
+  .argument("<desc>", "One-line space-separated description")
+  .action(branch);
 
 program.parse();
