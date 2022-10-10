@@ -4,7 +4,7 @@
   "description": "Comit is a command-line tool that makes it easier to form commit messages during mob sessions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "sudo npm i -G"
   },
   "author": "Owais Bin Asad",
   "license": "ISC",
