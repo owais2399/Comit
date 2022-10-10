@@ -1,14 +1,13 @@
 import conf from "conf";
 import chalk from "chalk";
 import validateConfig from "../utils/validateConfig.js";
-const config = new conf();
+import getConfig from "../utils/getConfig.js";
 
 export default function showConfig() {
-  let members = config.get("members");
-  let parentTicket = config.get("parentTicket");
-  let childTicket = config.get("childTicket");
+  const config = getConfig();
+  validateConfig(config);
 
-  validateConfig();
+  let { members, parentTicket, childTicket } = config;
 
   console.log(chalk.bold(`Members:`))
   members.forEach(member => {

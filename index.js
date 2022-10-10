@@ -5,6 +5,7 @@ import copy from "./commands/copy.js";
 import init from "./commands/init.js";
 import showConfig from "./commands/showConfig.js";
 import reset from "./commands/reset.js";
+import set from "./commands/set.js";
 
 program
   .description("Copy commit message to clipboard")
@@ -18,11 +19,22 @@ program
   .action(init);
 
 program
-  .command("show-config")
+  .command("show")
   .description("Displays the current config, if set")
   .action(showConfig);
 
 program.command("reset").description("Resets the set config").action(reset);
 
+program
+  .command("set")
+  .description("Sets a member active")
+  .argument("<uniqueInitials>", "Unique Initials of member")
+  .action((uniqueInitials) => set(uniqueInitials, true));
+
+program
+  .command("unset")
+  .description("Sets a member inactive")
+  .argument("<uniqueInitials>", "Unique Initials of member")
+  .action((uniqueInitials) => set(uniqueInitials, false));
 
 program.parse();

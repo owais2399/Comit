@@ -1,12 +1,10 @@
+import getConfig from "./getConfig.js";
 import chalk from "chalk";
 import conf from "conf";
 import { exit } from "process";
 const config = new conf();
 
-export default function validateConfig() {
-  let members = config.get("members");
-  let parentTicket = config.get("parentTicket");
-  let childTicket = config.get("childTicket");
+export default function validateConfig({ members, parentTicket }) {
 
   if (!members || !parentTicket) {
     console.log(

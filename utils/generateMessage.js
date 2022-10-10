@@ -1,14 +1,14 @@
 import validateConfig from "./validateConfig.js";
 import gitUserEmail from "git-user-email";
 import conf from "conf";
+import getConfig from "./getConfig.js";
 const config = new conf();
 
 export default function generateMessage(commitMsg) {
-  let members = config.get("members");
-  let parentTicket = config.get("parentTicket");
-  let childTicket = config.get("childTicket");
+  const config = getConfig();
+  let { members, parentTicket, childTicket } = config;
 
-  validateConfig();
+  validateConfig(config);
 
   let driverEmail = gitUserEmail();
   let message = `[${parentTicket}]${childTicket ? `[${childTicket}]` : ''} ${commitMsg ? `${commitMsg}` : ''}\n`;
