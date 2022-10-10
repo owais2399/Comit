@@ -10,13 +10,19 @@ export default function showConfig() {
 
   validateConfig();
 
-  console.log(chalk.green(`Members:`))
-  members.forEach(member => console.log(`${member.uniqueInitials} ${member.name} <${member.email}>`));
+  console.log(chalk.bold(`Members:`))
+  members.forEach(member => {
+    if (member.active) {
+      console.log(chalk.green(`${member.uniqueInitials} ${member.name} <${member.email}> \u2713\n`))
+    } else {
+      console.log(chalk.gray(`${member.uniqueInitials} ${member.name} <${member.email}> \u2717\n`))
+    }
+  })
   console.log("\n");
-  console.log(chalk.green(`Parent Ticket:`));
+  console.log(chalk.bold(`Parent Ticket:`));
   console.log(`${parentTicket}\n`);
   if (childTicket) {
-    console.log(chalk.green(`Child Ticket:`));
+    console.log(chalk.bold(`Child Ticket:`));
     console.log(`${childTicket}\n`);
   }
 

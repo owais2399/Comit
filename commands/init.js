@@ -1,3 +1,4 @@
+import showConfig from "./showConfig.js";
 import conf from "conf";
 import chalk from "chalk";
 import prompt from "prompt";
@@ -32,14 +33,13 @@ export default async function init() {
     const { email } = await prompt.get(['email']);
     const { uniqueInitials } = await prompt.get(['uniqueInitials']);
 
-    members.push({uniqueInitials, name, email});
+    members.push({uniqueInitials, name, email, active: true});
   }
-
-  console.log(chalk.green(`All set. Here's your config:\n`));
-  console.log(chalk.yellow(`${parentTicket} ${childTicket}\n`));
-  members.forEach(member => console.log(chalk.yellow(`${member.uniqueInitials} ${member.name} <${member.email}>\n`)))
 
   config.set("members", members)
   config.set("parentTicket", parentTicket)
   config.set("childTicket", childTicket)
+
+  console.log(chalk.green(`\nAll set. Here's your config:\n`));
+  showConfig();
 }
