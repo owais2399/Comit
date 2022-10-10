@@ -6,6 +6,8 @@ import init from "./commands/init.js";
 import showConfig from "./commands/showConfig.js";
 import reset from "./commands/reset.js";
 import set from "./commands/set.js";
+import setTicket from "./commands/setTicket.js";
+import delChildTicket from "./commands/delChildTicket.js";
 
 program
   .description("Copy commit message to clipboard")
@@ -36,5 +38,23 @@ program
   .description("Sets a member inactive")
   .argument("<uniqueInitials>", "Unique Initials of member")
   .action((uniqueInitials) => set(uniqueInitials, false));
+
+program
+  .command("parent")
+  .description("Sets the parent ticket")
+  .argument("<ticket>", "Parent Ticket")
+  .action((ticket) => setTicket(ticket, "parentTicket"));
+
+let child = program.command("child");
+
+child
+  .command("del")
+  .description("Deletes the child ticket")
+  .action(delChildTicket);
+
+child
+  .description("Sets the child ticket")
+  .argument("<ticket>", "Child Ticket")
+  .action((ticket) => setTicket(ticket, "childTicket"));
 
 program.parse();
