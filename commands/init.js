@@ -2,7 +2,7 @@ import showConfig from "./showConfig.js";
 import conf from "conf";
 import chalk from "chalk";
 import prompt from "prompt";
-const config = new conf();
+const config = new conf({ projectName: "comit" });
 
 export default async function init() {
   prompt.message = "";

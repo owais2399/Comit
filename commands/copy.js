@@ -5,8 +5,6 @@ import chalk from "chalk";
 import clipboard from "clipboardy";
 import generateMessage from "../utils/generateMessage.js";
 
-const config = new conf();
-
 export default function copy(commitMsg, commit) {
   if (commit) {
     exec(`git commit -m "${generateMessage(commitMsg)}"`, (error, _stdout, _stderr) => {

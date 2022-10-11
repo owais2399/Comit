@@ -3,7 +3,7 @@ import chalk from "chalk";
 import getConfig from "../utils/getConfig.js";
 import validateConfig from "../utils/validateConfig.js";
 import { exit } from "process";
-const _config = new conf();
+const _config = new conf({ projectName: "comit" });
 
 export default function set(uniqueInitials, value) {
   const config = getConfig();

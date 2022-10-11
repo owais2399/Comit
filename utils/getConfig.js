@@ -1,5 +1,5 @@
 import conf from "conf";
-const config = new conf();
+const config = new conf({ projectName: "comit" });
 
 export default function getConfig() {
   let members = config.get("members");

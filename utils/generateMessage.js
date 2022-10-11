@@ -2,7 +2,6 @@ import validateConfig from "./validateConfig.js";
 import gitUserEmail from "git-user-email";
 import conf from "conf";
 import getConfig from "./getConfig.js";
-const config = new conf();
 
 export default function generateMessage(commitMsg) {
   const config = getConfig();
