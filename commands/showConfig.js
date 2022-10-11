@@ -12,9 +12,9 @@ export default function showConfig() {
   console.log(chalk.bold(`Members:`))
   members.forEach(member => {
     if (member.active) {
-      console.log(chalk.green(`${member.uniqueInitials} ${member.name} <${member.email}> \u2713\n`))
+      console.log(chalk.green(`[${member.uniqueInitials}] ${member.name} <${member.email}> \u2713\n`))
     } else {
-      console.log(chalk.gray(`${member.uniqueInitials} ${member.name} <${member.email}> \u2717\n`))
+      console.log(chalk.gray(`[${member.uniqueInitials}] ${member.name} <${member.email}> \u2717\n`))
     }
   })
   console.log("\n");
