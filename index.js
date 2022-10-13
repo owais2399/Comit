@@ -13,8 +13,14 @@ import branch from "./commands/branch.js";
 program
   .description("Copy commit message to clipboard")
   .argument("[commit-msg]", "commit message")
+  .option("-a", "stages all files in the current working directory, same as git add .")
   .option("-c", "commits to git instead of copying to clipboard")
-  .action((commitMsg) => copy(commitMsg, program.opts()["c"]));
+  .option("-p", "pushes to remote, same as git push")
+  .option("-x", "stages, commits, and pushes the changes to remote, combination of -a -c and -p")
+  .action((commitMsg) => {
+    const options = program.opts();
+    copy(commitMsg, options["a"], options["c"], options["p"], options["x"])
+  });
 
 program
   .command("init")
