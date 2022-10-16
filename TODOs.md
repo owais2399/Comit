@@ -6,3 +6,6 @@
 - ~~add support for `git add` in `comit <commit-msg> [-c]` with flag `-a`~~
 - ~~add support for `git push` in `comit <commit-msg> [-c]` with flag `-p`~~
 - ~~add flag `-x` in `comit <commit-msg>` that stages, commits, and pushes in one call~~
+- add support for `comit add` to add a new team member
+- add support for `comit remove` to remove a team member
+- add check for uniqueness for unique initials on `comit init` and `comit add`
