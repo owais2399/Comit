@@ -10,6 +10,7 @@ import setTicket from "./commands/setTicket.js";
 import delChildTicket from "./commands/delChildTicket.js";
 import branch from "./commands/branch.js";
 import prTitle from "./commands/prTitle.js";
+import prHeader from "./commands/prHeader.js";
 
 program
   .description("Copy commit message to clipboard")
@@ -83,5 +84,9 @@ pr.command("title")
   .description("Generates a PR title and copies to clipboard")
   .argument("[title]", "title string to inject")
   .action(prTitle);
+
+pr.command("header")
+.description("Generates a PR header and copies to clipboard")
+.action(prHeader);
 
 program.parse();
