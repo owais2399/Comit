@@ -5,25 +5,31 @@ import validateConfig from "../utils/validateConfig.js";
 import { exit } from "process";
 const _config = new conf({ projectName: "comit" });
 
-export default function set(uniqueInitials, value) {
+export default function set(uniqueInitials, all, value) {
   const config = getConfig();
   validateConfig(config);
 
   let members = config.members;
 
-  uniqueInitials.forEach(initials => {
-    const index = members.findIndex(
-      (member) => member.uniqueInitials === initials
-    );
-  
-    if (index == -1) {
-      console.log(
-        chalk.red(`No member exists with uniqueInitials ${initials}!`)
-      );
-      exit(1);
+  if (all) {
+    for (let i = 0; i < members.length; i++) {
+      members[i].active = value;
     }
-    members[index].active = value;
-  })
+  } else {
+    uniqueInitials.forEach(initials => {
+      const index = members.findIndex(
+        (member) => member.uniqueInitials === initials
+      );
+    
+      if (index == -1) {
+        console.log(
+          chalk.red(`No member exists with uniqueInitials ${initials}!`)
+        );
+        exit(1);
+      }
+      members[index].active = value;
+    })
+  }
 
   _config.set("members", members);
 }

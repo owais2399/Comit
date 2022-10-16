@@ -45,14 +45,16 @@ program.command("reset").description("Resets the set config").action(reset);
 program
   .command("set")
   .description("Sets members active")
+  .option("-a", "sets all members active")
   .argument("[uniqueInitials...]", "Space-separated unique initials of members")
-  .action((uniqueInitials) => set(uniqueInitials, true));
+  .action((uniqueInitials) => set(uniqueInitials, program.opts()["a"], true));
 
 program
   .command("unset")
   .description("Sets members inactive")
+  .option("-a", "sets all members inactive")
   .argument("[uniqueInitials...]", "Space-separated unique initials of members")
-  .action((uniqueInitials) => set(uniqueInitials, false));
+  .action((uniqueInitials) => set(uniqueInitials, program.opts()["a"], false));
 
 program
   .command("parent")
