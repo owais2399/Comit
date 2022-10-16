@@ -9,17 +9,24 @@ import set from "./commands/set.js";
 import setTicket from "./commands/setTicket.js";
 import delChildTicket from "./commands/delChildTicket.js";
 import branch from "./commands/branch.js";
+import prTitle from "./commands/prTitle.js";
 
 program
   .description("Copy commit message to clipboard")
   .argument("[commit-msg]", "commit message")
-  .option("-a", "stages all files in the current working directory, same as git add .")
+  .option(
+    "-a",
+    "stages all files in the current working directory, same as git add ."
+  )
   .option("-c", "commits to git instead of copying to clipboard")
   .option("-p", "pushes to remote, same as git push")
-  .option("-x", "stages, commits, and pushes the changes to remote, combination of -a -c and -p")
+  .option(
+    "-x",
+    "stages, commits, and pushes the changes to remote, combination of -a -c and -p"
+  )
   .action((commitMsg) => {
     const options = program.opts();
-    copy(commitMsg, options["a"], options["c"], options["p"], options["x"])
+    copy(commitMsg, options["a"], options["c"], options["p"], options["x"]);
   });
 
 program
@@ -69,5 +76,12 @@ program
   .description("Copies a generated branch name to clipboard")
   .argument("<desc>", "One-line space-separated description")
   .action(branch);
+
+let pr = program.command("pr");
+
+pr.command("title")
+  .description("Generates a PR title and copies to clipboard")
+  .argument("[title]", "title string to inject")
+  .action(prTitle);
 
 program.parse();
