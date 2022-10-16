@@ -44,14 +44,14 @@ program.command("reset").description("Resets the set config").action(reset);
 
 program
   .command("set")
-  .description("Sets a member active")
-  .argument("<uniqueInitials>", "Unique Initials of member")
+  .description("Sets members active")
+  .argument("[uniqueInitials...]", "Space-separated unique initials of members")
   .action((uniqueInitials) => set(uniqueInitials, true));
 
 program
   .command("unset")
-  .description("Sets a member inactive")
-  .argument("<uniqueInitials>", "Unique Initials of member")
+  .description("Sets members inactive")
+  .argument("[uniqueInitials...]", "Space-separated unique initials of members")
   .action((uniqueInitials) => set(uniqueInitials, false));
 
 program

@@ -1,5 +1,5 @@
 # TO-DOs
-- enable multi input support for `comit set` and `comit unset` so that users can do `comit set/unset ABC DEF GHI...` to set/unset multiple members in one call
+- ~~enable multi input support for `comit set` and `comit unset` so that users can do `comit set/unset ABC DEF GHI...` to set/unset multiple members in one call~~
 - implement flag `-a | --all` for `comit set/unset`
 - finish implentation of `comit PR header`
 - ~~implement `comit PR title`~~

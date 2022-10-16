@@ -11,17 +11,19 @@ export default function set(uniqueInitials, value) {
 
   let members = config.members;
 
-  const index = members.findIndex(
-    (member) => member.uniqueInitials === uniqueInitials
-  );
-
-  if (index == -1) {
-    console.log(
-      chalk.red(`No member exists with uniqueInitials ${uniqueInitials}!`)
+  uniqueInitials.forEach(initials => {
+    const index = members.findIndex(
+      (member) => member.uniqueInitials === initials
     );
-    exit(1);
-  }
+  
+    if (index == -1) {
+      console.log(
+        chalk.red(`No member exists with uniqueInitials ${initials}!`)
+      );
+      exit(1);
+    }
+    members[index].active = value;
+  })
 
-  members[index].active = value;
   _config.set("members", members);
 }
