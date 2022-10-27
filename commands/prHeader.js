@@ -4,6 +4,7 @@ import getConfig from "../utils/getConfig.js";
 
 export default function prHeader() {
     const { parentTicket, childTicket } = getConfig();
-    // clipboard.writeSync(`[${parentTicket}]${childTicket ? `[${childTicket}]` : ''} ${title ? title : ''}`)
-    console.log(chalk.red("Not implemented."));
+    const childString = `/[${childTicket}](https://sadapay.atlassian.net/browse/${childTicket})`
+    clipboard.writeSync(`[${parentTicket}](https://sadapay.atlassian.net/browse/${parentTicket})${childTicket ? childString : ''}`)
+    console.log(chalk.green("Copied to clipboard!"));
 }
