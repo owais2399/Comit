@@ -8,7 +8,8 @@
 - ~~add flag `-x` in `comit <commit-msg>` that stages, commits, and pushes in one call~~
 - ~~add support for `comit member add` to add a new team member~~
 - ~~add support for `comit member del` to remove a team member~~
-- add check for uniqueness for unique initials on `comit init` ~~and `comit add`~~
-- fix "prompt" on `comit member add`
+- ~~add check for uniqueness for unique initials on `comit init` and `comit add`~~
+- ~~fix "prompt" on `comit member add`~~
+- ~~add support for version flag `-v, --version`~~
+- ~~fix `comit show` spacing~~
 - add support for escape sequence `Ctrl + C`
-- add support for version flag `-v, --version`

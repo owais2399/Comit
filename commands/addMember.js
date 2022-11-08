@@ -7,6 +7,9 @@ const config = new conf({ projectName: "comit" });
 
 export default async function addMember() {
   let { members } = getConfig();
+
+  prompt.message = "";
+  prompt.delimiter = "";
     
   const { name } = await prompt.get(['name']);
   const { email } = await prompt.get(['email']);

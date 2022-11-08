@@ -17,7 +17,6 @@ export default function showConfig() {
       console.log(chalk.gray(`[${member.uniqueInitials}] ${member.name} <${member.email}> \u2717\n`))
     }
   })
-  console.log("\n");
   console.log(chalk.bold(`Parent Ticket:`));
   console.log(`${parentTicket}\n`);
   if (childTicket) {
