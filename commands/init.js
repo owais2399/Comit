@@ -33,7 +33,19 @@ export default async function init() {
     const { email } = await prompt.get(['email']);
     const { uniqueInitials } = await prompt.get(['uniqueInitials']);
 
-    members.push({uniqueInitials, name, email, active: true});
+    let unique = true;
+    
+    for (let i = 0; i < members.length; i++) {
+      if (members[i].email === email || members[i].uniqueInitials === uniqueInitials) {
+        unique = false;
+      }
+    }
+
+    if (unique) {
+      members.push({uniqueInitials, name, email, active: true});
+    } else {
+      console.log(chalk.red(`The email or uniqueInitials you entered were already in use! This member will be ignored.`))
+    }
   }
 
   config.set("members", members)
