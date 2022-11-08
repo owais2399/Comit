@@ -1,11 +1,11 @@
 # TO-DOs
 - ~~enable multi input support for `comit set` and `comit unset` so that users can do `comit set/unset ABC DEF GHI...` to set/unset multiple members in one call~~
 - ~~implement flag `-a` for `comit set/unset`~~
-- finish implentation of `comit pr header`
+- ~~finish implentation of `comit pr header`~~
 - ~~implement `comit pr title`~~
 - ~~add support for `git add` in `comit <commit-msg> [-c]` with flag `-a`~~
 - ~~add support for `git push` in `comit <commit-msg> [-c]` with flag `-p`~~
 - ~~add flag `-x` in `comit <commit-msg>` that stages, commits, and pushes in one call~~
-- add support for `comit add` to add a new team member
-- add support for `comit remove` to remove a team member
-- add check for uniqueness for unique initials on `comit init` and `comit add`
+- ~~add support for `comit member add` to add a new team member~~
+- ~~add support for `comit member del` to remove a team member~~
+- add check for uniqueness for unique initials on `comit init` ~~and `comit add`~~

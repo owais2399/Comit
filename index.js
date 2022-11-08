@@ -11,6 +11,8 @@ import delChildTicket from "./commands/delChildTicket.js";
 import branch from "./commands/branch.js";
 import prTitle from "./commands/prTitle.js";
 import prHeader from "./commands/prHeader.js";
+import addMember from "./commands/addMember.js";
+import delMember from "./commands/delMember.js";
 
 program
   .description("Copy commit message to clipboard")
@@ -90,5 +92,17 @@ pr.command("title")
 pr.command("header")
 .description("Generates a PR header and copies to clipboard")
 .action(prHeader);
+
+let member = program.command("member");
+
+member
+  .command("add")
+  .description("Add a new member to the config")
+  .action(addMember);
+
+member
+.command("del")
+.argument("<initials>", "uniqueInitials of member to delete")
+.action(delMember);
 
 program.parse();
