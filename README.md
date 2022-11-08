@@ -23,5 +23,21 @@ You won't be working on the same ticket every single day (hopefully 🤞), nor w
 - Now that you're done setting up Comit for your day, you can simply type `comit` and hit enter to generate a commit message boilerplate and copy it to your clipboard. Paste this message in your IDE's commit message box and modify it as needed.
 - In case you also want to add a commit message to the generated boilerplate, just add your message after the command like `comit <commit-message>`. This will still copy the generated string to your keyboard.
 - Hmmm, but what if you also want to commit directly from the terminal (like the pros)? 🤔 Well, just pass the `-c` flag with the above command and Comit will directly commit with the generated string rather than copying to your clipboard. Once you get used to the tool, you'll most likely be using this approach the most.
+- There are a couple of more things you can do with `comit`, run `comit --help` to see the details.
 ### Generating branch names
-- 
+- Since you've already set the parent and child tickets, you can just run `comit branch <description>` to copy the branch name to your clipboard. The `<description>` should be a space-separated one-liner about the branch. For example, if your branch implements a new GET endpoint, you could call `comit branch "get user details"`.
+
+### Generating PR strings
+- Run `comit pr title [title-string]` to generate the PR title based on your parent ticket, child ticket, and, if you've passed it, the `[title-string]`.
+- Run `comit or header` to generate the PR header like the one you see below:
+<img src="./images/pr-header.png">
+
+### Other Stuff You Can Do
+- Run `comit show` to see the current config.
+- Run `comit reset` to reset the config.
+- To add a new member without having to `comit init`, you can use `comit member add` to do just that!
+- To remove a member, just run `comit member del <uniqueInitials>`.
+
+<br>
+
+***Note:** Always run this tool in a git repo.*
