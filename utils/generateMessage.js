@@ -13,7 +13,7 @@ export default function generateMessage(commitMsg) {
   let message = `[${parentTicket}]${childTicket ? `[${childTicket}]` : ''} ${commitMsg ? `${commitMsg}` : ''}\n`;
 
   members = members.filter(member => (member.email !== driverEmail && member.active));
-  members.forEach(member => message += `\nCo-Authored By: ${member.name} <${member.email}>`)
+  members.forEach(member => message += `\nCo-Authored-By: ${member.name} <${member.email}>`)
 
   return message;
 }
