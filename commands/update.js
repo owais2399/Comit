@@ -10,6 +10,7 @@ export default async function update() {
   const remoteVersion = res.data["dist-tags"].latest;
 
   if (localVersion !== remoteVersion) {
+    console.log(chalk.gray(`Local version: ${localVersion}\nRemote version: ${remoteVersion}`));
     console.log(
       chalk.yellow(
         `There's a new version available. Update comit by running ${chalk.italic(
