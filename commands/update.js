@@ -6,8 +6,8 @@ import jsonfile from "jsonfile";
 export default async function update() {
   console.log(chalk.gray(`Checking for updates...`));
   const res = await axios.get("https://registry.npmjs.org/comit/");
-  const localVersion = jsonfile.readFileSync("./package.json").version;
-  const remoteVersion = res.data["dist-tags"].latest;
+  const localVersion = jsonfile.readFileSync("./package.json").version.trim();
+  const remoteVersion = res.data["dist-tags"].latest.trim();
 
   if (localVersion !== remoteVersion) {
     console.log(chalk.gray(`Local version: ${localVersion}\nRemote version: ${remoteVersion}`));
