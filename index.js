@@ -13,6 +13,7 @@ import prTitle from "./commands/prTitle.js";
 import prHeader from "./commands/prHeader.js";
 import addMember from "./commands/addMember.js";
 import delMember from "./commands/delMember.js";
+import update from "./commands/update.js";
 
 program.version("1.2.1", "-v, --version");
 
@@ -106,5 +107,7 @@ member
 .command("del")
 .argument("<initials>", "uniqueInitials of member to delete")
 .action(delMember);
+
+program.command("update").description("checks for updates").action(update);
 
 program.parse();
