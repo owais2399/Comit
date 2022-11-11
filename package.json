@@ -1,6 +1,6 @@
 {
   "name": "comit",
-  "version": "1.2.1",
+  "version": "1.2.0",
   "description": "Comit is a command-line tool that makes it easier to form commit messages during mob sessions.",
   "main": "index.js",
   "scripts": {

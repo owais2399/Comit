@@ -14,9 +14,10 @@ import prHeader from "./commands/prHeader.js";
 import addMember from "./commands/addMember.js";
 import delMember from "./commands/delMember.js";
 import update from "./commands/update.js";
+import checkUpdatesIfApplicable from "./utils/updater.js";
 
 program.version("1.2.1", "-v, --version");
-
+await checkUpdatesIfApplicable();
 program
   .description("Copy commit message to clipboard")
   .argument("[commit-msg]", "commit message")
