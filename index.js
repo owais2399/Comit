@@ -16,7 +16,7 @@ import delMember from "./commands/delMember.js";
 import update from "./commands/update.js";
 import checkUpdatesIfApplicable from "./utils/updater.js";
 
-program.version("1.2.3", "-v, --version");
+program.version("1.2.4", "-v, --version");
 await checkUpdatesIfApplicable();
 program
   .description("Copy commit message to clipboard")
