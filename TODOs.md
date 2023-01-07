@@ -12,11 +12,11 @@
 - ~~fix "prompt" on `comit member add`~~
 - ~~add support for version flag `-v, --version`~~
 - ~~fix `comit show` spacing~~
-- add support for escape sequence `Ctrl + C`
-- add support for "teams" where each team is a group of members
-    - each time can be set or unset in an additive manner
-    - setting a team after one has already been set won't override the previous one but will add on members on top of it
+- ~~add support for "teams" where each team is a group of members~~
+    - ~~each time can be set in a substitutive manner~~
+    - ~~setting a team after one has already been set will override the previous one~~
 - add analytics to capture:
     - who is using comit (github name and email)
     - which commands are being run (using custom events)
     - which version is being used (as a custom attribute on the user)
+- add support for escape sequence `Ctrl + C`
