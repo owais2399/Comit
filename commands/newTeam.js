@@ -7,6 +7,9 @@ import setTeam from "../utils/setConfig.js";
 const config = new conf({ projectName: "comit" });
 
 export default async function newTeam() {
+  prompt.message = "";
+  prompt.delimiter = "";
+  
   // Display Roster
   let { members } = getConfig();
 
@@ -59,12 +62,11 @@ export default async function newTeam() {
     }
   }
 
-  console.log("What do you want to call this new team?\n");
+  console.log("\n\nWhat do you want to call this new team?\n");
   console.log(
     chalk.gray(
       chalk.italic(
-        `Team names are case sensitive and without spaces.\n
-        If you use a name that is already in use, that team will get overridden.\n`
+        `Team names are case sensitive and without spaces.\nIf you use a name that is already in use, that team will get overridden.\n`
       )
     )
   );
