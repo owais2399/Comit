@@ -26,7 +26,7 @@ export default function showConfig() {
     }
   });
 
-  if(teams) {
+  if(teams && teams.length > 0) {
     console.log(chalk.bold(chalk.underline(`\n\nTeams:\n`)));
     teams.forEach((team) => {
       console.log(`Name: ${team.name}\t\tMembers: ${team.members.join(", ")}\n`);

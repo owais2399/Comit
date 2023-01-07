@@ -2,7 +2,7 @@ import conf from "conf";
 import chalk from "chalk";
 import prompt from "prompt";
 import getConfig from "../utils/getConfig.js";
-import setTeam from "../utils/setConfig.js";
+import saveTeam from "../utils/setConfig.js";
 
 const config = new conf({ projectName: "comit" });
 
@@ -85,7 +85,7 @@ export default async function newTeam() {
   }
 
   //   Persist new team
-  setTeam(name, team_members);
+  saveTeam(name, team_members);
 }
 
 const isValidMember = (uniqueInitials, members) => {

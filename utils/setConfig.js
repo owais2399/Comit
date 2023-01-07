@@ -1,7 +1,8 @@
+import chalk from "chalk";
 import conf from "conf";
 const config = new conf({ projectName: "comit" });
 
-export default function setTeam(name, team_members) {
+export default function saveTeam(name, team_members) {
   let teams = config.get("teams");
   if (!teams) {
     config.set("teams", []);
@@ -25,4 +26,6 @@ export default function setTeam(name, team_members) {
   }
 
   config.set("teams", teams);
+
+  console.log(chalk.green(`Team "${name}" saved!`));
 }

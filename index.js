@@ -16,6 +16,8 @@ import delMember from "./commands/delMember.js";
 import update from "./commands/update.js";
 import newTeam from "./commands/newTeam.js";
 import checkUpdatesIfApplicable from "./utils/updater.js";
+import setTeam from "./commands/setTeam.js";
+import delTeam from "./commands/delTeam.js";
 
 program.version("1.2.4", "-v, --version");
 await checkUpdatesIfApplicable();
@@ -49,12 +51,18 @@ program
 
 program.command("reset").description("Resets the set config").action(reset);
 
-program
-  .command("set")
+let setCommand = program.command("set");
+
+setCommand
   .description("Sets members active")
   .option("-a", "sets all members active")
   .argument("[uniqueInitials...]", "Space-separated unique initials of members")
   .action((uniqueInitials) => set(uniqueInitials, program.opts()["a"], true));
+
+setCommand
+  .command("team")
+  .argument("<name>", "Name of the team to set")
+  .action((name) => setTeam(name));
 
 program
   .command("unset")
@@ -95,8 +103,8 @@ pr.command("title")
   .action(prTitle);
 
 pr.command("header")
-.description("Generates a PR header and copies to clipboard")
-.action(prHeader);
+  .description("Generates a PR header and copies to clipboard")
+  .action(prHeader);
 
 let member = program.command("member");
 
@@ -106,14 +114,18 @@ member
   .action(addMember);
 
 member
-.command("del")
-.argument("<initials>", "uniqueInitials of member to delete")
-.action(delMember);
+  .command("del")
+  .argument("<initials>", "uniqueInitials of member to delete")
+  .action(delMember);
 
 program.command("update").description("checks for updates").action(update);
 
 let team = program.command("team");
 
 team.command("new").action(newTeam);
+team
+  .command("del")
+  .arguments("<name>", "Name of the team to delete")
+  .action((name) => delTeam(name));
 
 program.parse();
