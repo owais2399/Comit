@@ -14,6 +14,7 @@ import prHeader from "./commands/prHeader.js";
 import addMember from "./commands/addMember.js";
 import delMember from "./commands/delMember.js";
 import update from "./commands/update.js";
+import newTeam from "./commands/newTeam.js";
 import checkUpdatesIfApplicable from "./utils/updater.js";
 
 program.version("1.2.4", "-v, --version");
@@ -110,5 +111,9 @@ member
 .action(delMember);
 
 program.command("update").description("checks for updates").action(update);
+
+let team = program.command("team");
+
+team.command("new").action(newTeam);
 
 program.parse();
