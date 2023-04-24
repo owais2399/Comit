@@ -19,7 +19,7 @@ import checkUpdatesIfApplicable from "./utils/updater.js";
 import setTeam from "./commands/setTeam.js";
 import delTeam from "./commands/delTeam.js";
 
-program.version("1.2.7", "-v, --version");
+program.version("1.2.8", "-v, --version");
 await checkUpdatesIfApplicable();
 program
   .description("Copy commit message to clipboard")

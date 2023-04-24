@@ -37,6 +37,9 @@ You won't be working on the same ticket every single day (hopefully 🤞), nor w
 - Run `comit reset` to reset the config.
 - To add a new member without having to `comit init`, you can use `comit member add` to do just that!
 - To remove a member, just run `comit member del <uniqueInitials>`.
+- To create a new team out of your existing members in your roster, you can run `comit team new` and follow the instructions provided.
+- To set a team as a whole, you can use `comit set team <name>`.
+- To delete an existing team, just run `comit team del <name>` where the `<name>` is the case-sensitive name you gave to the team while creating it.
 
 <br>
 

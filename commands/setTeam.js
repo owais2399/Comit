@@ -39,7 +39,7 @@ export default function setTeam(name) {
   }
 
   //   Unset all existing members
-  set([], true, false);
+  set([], true, false, false);
 
   //   Set only the new team members
   set(team_members, undefined, true);
