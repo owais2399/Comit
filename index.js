@@ -19,7 +19,7 @@ import checkUpdatesIfApplicable from "./utils/updater.js";
 import setTeam from "./commands/setTeam.js";
 import delTeam from "./commands/delTeam.js";
 
-program.version("1.2.6", "-v, --version");
+program.version("1.2.7", "-v, --version");
 await checkUpdatesIfApplicable();
 program
   .description("Copy commit message to clipboard")
@@ -95,7 +95,7 @@ program
   .argument("<desc>", "One-line space-separated description")
   .action(branch);
 
-let pr = program.command("pr");
+let pr = program.command("pr").description("Generate title and header strings for your PRs");
 
 pr.command("title")
   .description("Generates a PR title and copies to clipboard")
@@ -106,7 +106,7 @@ pr.command("header")
   .description("Generates a PR header and copies to clipboard")
   .action(prHeader);
 
-let member = program.command("member");
+let member = program.command("member").description("Add a new member or delete an existing one using their uniqueInitials");
 
 member
   .command("add")
@@ -120,7 +120,7 @@ member
 
 program.command("update").description("checks for updates").action(update);
 
-let team = program.command("team");
+let team = program.command("team").description("Create a new team from your members or delete an existing one");
 
 team.command("new").action(newTeam);
 team
