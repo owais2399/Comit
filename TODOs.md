@@ -20,3 +20,5 @@
     - which commands are being run (using custom events)
     - which version is being used (as a custom attribute on the user)
 - add support for escape sequence `Ctrl + C`
+- add support for parsing-in tickets from JIRA link for faster parent and child ticket setting
+- show updated config when `set`, `unset`, `parent`, `child`, and anything that mutates the config
