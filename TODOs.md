@@ -25,3 +25,4 @@
 - add support for project key:
     - in config
     - in `comit set/unset`
+- add support for `comit branch -b <one-line-desc>` to auto-create a new branch
