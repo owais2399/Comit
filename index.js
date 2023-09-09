@@ -19,7 +19,7 @@ import checkUpdatesIfApplicable from "./utils/updater.js";
 import setTeam from "./commands/setTeam.js";
 import delTeam from "./commands/delTeam.js";
 
-program.version("1.2.8", "-v, --version");
+program.version("1.2.9", "-v, --version");
 await checkUpdatesIfApplicable();
 program
   .description("Copy commit message to clipboard")
@@ -93,7 +93,11 @@ program
   .command("branch")
   .description("Copies a generated branch name to clipboard")
   .argument("<desc>", "One-line space-separated description")
-  .action(branch);
+  .option("-x", "creates the new branch as well")
+  .action((desc) => {
+    const options = program.opts();
+    branch(desc, options["x"]);
+  });
 
 let pr = program.command("pr").description("Generate title and header strings for your PRs");
 
