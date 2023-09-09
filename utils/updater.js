@@ -8,7 +8,7 @@ const config = new conf({ projectName: "comit" });
 
 export default async function checkUpdatesIfApplicable() {
     const { lastUpdateCheckedAt } = getConfig();
-    const CHECK_UPDATE_THRESHOLD = 43200000; // 12 hours
+    const CHECK_UPDATE_THRESHOLD = 172800000; // 48 hours
 
     const now = Date.now();
 
