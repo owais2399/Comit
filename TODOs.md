@@ -21,4 +21,7 @@
     - which commands are being run (using custom events)
     - which version is being used (as a custom attribute on the user)
 - add support for escape sequence `Ctrl + C`
-- add support for parsing-in tickets from JIRA link for faster parent and child ticket setting
+- ~add support for parsing-in tickets from JIRA link for faster parent and child ticket setting~ [can't do because JIRA links only contain the child ticket]
+- add support for project key:
+    - in config
+    - in `comit set/unset`
